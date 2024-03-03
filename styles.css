@@ -1,0 +1,59 @@
+:root {
+    --darkest-blue: #27374D;
+    --dark-blue: #526D82;
+    --midtone-blue: #9DB2BF;
+    --light-blue: #DDE6ED;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    text-align: center;
+    background-color: var(--midtone-blue);
+    color: var(--darkest-blue);
+    box-shadow: 0px 3px 5px #526D82;
+    position: relative;
+}
+
+.content-container {
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-grid {
+    background-color: var(--light-blue);
+    flex: 0 0 30%;
+    aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 130px;
+    padding: 0;
+}
+
+.number1, .number2, .number4, .number5, .number7, .number8 {
+    border-right: 2px solid var(--dark-blue);
+}
+
+.number1, .number2, .number3, .number4, .number5, .number6 {
+    border-bottom: 2px solid var(--dark-blue);
+}
+
+.cell p {
+    margin: 0;
+}

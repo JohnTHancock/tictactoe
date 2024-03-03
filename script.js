@@ -32,15 +32,6 @@ function Gameboard() {
 };
 
 
-// function findCellValue(selectedRow, selectedColumn) {
-//     const board = Gameboard();
-//     board.getBoard();
-//     // const row = board[selectedRow];
-//     // const selectedCell = row[selectedColumn];
-//     selectedCell = board[selectedRow][selectedColumn].Cell.getValue();
-//     console.log(selectedCell);
-// }
-
 function Cell() {
     let value = 0;
 
@@ -61,6 +52,15 @@ function GameController(
     playerTwoName = 'Player Two'
 ) {
     const board = Gameboard();
+    const cell1 = document.querySelector('.number1');
+    const cell2 = document.querySelector('.number2');
+    const cell3 = document.querySelector('.number3');
+    const cell4 = document.querySelector('.number4');
+    const cell5 = document.querySelector('.number5');
+    const cell6 = document.querySelector('.number6');
+    const cell7 = document.querySelector('.number7');
+    const cell8 = document.querySelector('.number8');
+    const cell9 = document.querySelector('.number9');
 
     const players = [
         {
@@ -83,55 +83,69 @@ function GameController(
     const printNewRound = () => {
         board.printBoard();
         console.log(`${getActivePlayer().playerName}'s turn.`);
+        const playerTurnDisplay = document.querySelector('.player-turn-display');
+        playerTurnDisplay.textContent = `${getActivePlayer().playerName}'s turn.`;
     };
 
     const playRound = (row, column) => {
         board.playToken(row, column, getActivePlayer().token);
 
-        // const checkForRows = () => {
-        //     const boardArray = board.getBoard();
-        //     for (let i = 0; i < 3; i++) {
-        //         let row = [];
-        //         for (let j = 0; j < 3; j++) {
-        //             row.push(boardArray[i][j].getValue());
-        //         }
+        const printDisplay = () => {
+            const boardArray = board.getBoard();
+            if (boardArray[0][0].getValue() === 1) {
+                cell1.textContent = 'X';
+            } else if (boardArray[0][0].getValue() === 2) {
+                cell1.textContent = 'O';
+            };
 
-        //         if (row.every(field => field == 1) || row.every(field => field == 2)) {
-        //             return true
-        //         }
-        //     }
-        //     return false
-        // }
+            if (boardArray[0][1].getValue() === 1) {
+                cell2.textContent = 'X';
+            } else if (boardArray[0][1].getValue() === 2) {
+                cell2.textContent = 'O';
+            };
 
-        // const checkforColumns = () => {
-        //     const boardArray = board.getBoard();
-        //     for (let i = 0; i < 3; i++) {
-        //         const firstCellValue = boardArray[0][i].getValue();
+            if (boardArray[0][2].getValue() === 1) {
+                cell3.textContent = 'X';
+            } else if (boardArray[0][2].getValue() === 2) {
+                cell3.textContent = 'O';
+            };
 
-        //         if (firstCellValue != 0 &&
-        //             boardArray[1][i].getValue() === firstCellValue &&
-        //             boardArray[2][i].getValue() === firstCellValue) {
-        //                 return true;
-        //             }
-        //     }
-        //     return false;
-        // }
+            if (boardArray[1][0].getValue() === 1) {
+                cell4.textContent = 'X';
+            } else if (boardArray[1][0].getValue() === 2) {
+                cell4.textContent = 'O';
+            };
 
-        // const checkForDiagonals = () => {
-        //     const boardArray = board.getBoard();
-        //     const topLeftValue = boardArray[0][0].getValue();
-        //     const topRightValue = boardArray[0][2].getValue();
-        //     if (topLeftValue != 0 &&
-        //         boardArray[1][1].getValue() === topLeftValue &&
-        //         boardArray[2][2].getValue() === topLeftValue) {
-        //             return true;
-        //         } else if (topRightValue != 0 &&
-        //             boardArray[1][1].getValue() === topRightValue &&
-        //             boardArray[2][0].getValue() === topRightValue) {
-        //                 return true;
-        //             }
-        //             return false;
-        // }
+            if (boardArray[1][1].getValue() === 1) {
+                cell5.textContent = 'X';
+            } else if (boardArray[1][1].getValue() === 2) {
+                cell5.textContent = 'O';
+            };
+
+            if (boardArray[1][2].getValue() === 1) {
+                cell6.textContent = 'X';
+            } else if (boardArray[1][2].getValue() === 2) {
+                cell6.textContent = 'O';
+            };
+
+            if (boardArray[2][0].getValue() === 1) {
+                cell7.textContent = 'X';
+            } else if (boardArray[2][0].getValue() === 2) {
+                cell7.textContent = 'O';
+            };
+
+            if (boardArray[2][1].getValue() === 1) {
+                cell8.textContent = 'X';
+            } else if (boardArray[2][1].getValue() === 2) {
+                cell8.textContent = 'O';
+            };
+
+            if (boardArray[2][2].getValue() === 1) {
+                cell9.textContent = 'X';
+            } else if (boardArray[2][2].getValue() === 2) {
+                cell9.textContent = 'O';
+            };
+        };
 
         const checkForWin = () => {
             const boardArray = board.getBoard();
@@ -178,7 +192,8 @@ function GameController(
             }
             return !checkForWin();
         }
-        
+        printDisplay();
+
         const winnerFound = checkForWin();
         if (winnerFound) {
             console.log(`${getActivePlayer().playerName} wins!`);
